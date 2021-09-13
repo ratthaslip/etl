@@ -64,7 +64,7 @@ class Pipeline(object):
         self.population.to_sql('population', db.conn, if_exists='append', index=False)
         self.unemployment.to_sql('unemployment', db.conn, if_exists='append', index=False)
         
-    def select_all_population(self):
+    def print_population(self):
         # open the file in the write mode
         f = open('data/population.csv', 'w')
 
@@ -126,5 +126,6 @@ if __name__ == '__main__':
     pipeline.transform()
     print('\t loading into database ... ')
     pipeline.load()
-    pipeline.select_all_population()
+    print('\t Printing Population from database ... ')
+    pipeline.print_population()
     print('\nDone. See: result in "db.sqlite"')
